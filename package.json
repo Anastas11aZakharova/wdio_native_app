@@ -7,9 +7,11 @@
     "@wdio/local-runner": "^9.5.0",
     "@wdio/mocha-framework": "^9.5.0",
     "@wdio/spec-reporter": "^9.5.0",
+    "allure-commandline": "^2.32.0",
     "appium-uiautomator2-driver": "^3.9.6",
+    "dotenv": "^16.4.7",
     "tsx": "^4.19.2",
-    "dotenv": "^16.4.7"
+    "wdio-video-reporter": "^6.1.1"
   },
   "scripts": {
     "test": "wdio run ./wdio.conf.ts",
