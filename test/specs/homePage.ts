@@ -11,6 +11,6 @@ describe("Home page tests", () => {
     await expect(homePage.informationLine).toBeDisplayed();
     await expect(homePage.iOSLogo).toBeDisplayed();
     await expect(homePage.androidLogo).toBeDisplayed();
-    await expect(homePage.supportLine).not.toBeDisplayed();
+    await expect(homePage.supportLine).toBeDisplayed();
   });
 });
