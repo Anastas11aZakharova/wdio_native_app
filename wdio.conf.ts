@@ -15,7 +15,7 @@ export const config: WebdriverIO.Config = {
     {
       project: "WDIO native app testing",
       build: "WDIO native Android",
-      name: "test1",
+      name: "wdio tests",
       device: "Google Pixel 3",
       os_version: "9.0",
       app: process.env.BROWSERSTACK_APP_ID,
@@ -51,14 +51,5 @@ export const config: WebdriverIO.Config = {
   mochaOpts: {
     ui: "bdd",
     timeout: 60000,
-  },
-  afterTest: async function (
-    test,
-    context,
-    { error, result, duration, passed, retries }
-  ) {
-    if (!passed) {
-      await browser.takeScreenshot();
-    }
   },
 };
