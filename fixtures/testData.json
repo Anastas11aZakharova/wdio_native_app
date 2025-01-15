@@ -1,0 +1,13 @@
+{
+    "invalidEmails": [
+      "plainaddress",
+      "missing@domain",
+      "@missingusername.com",
+      "missingat.com",
+      "missingdomain@.com",
+      "missingdot@domaincom",
+      "space in@address.com",
+      "special@char!acters.com"
+    ]
+  }
+  

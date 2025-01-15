@@ -17,5 +17,14 @@
     "test": "wdio run ./wdio.conf.ts",
     "report:generate": "allure generate --clean",
     "report:open": "allure open"
-  }
+  },
+  "version": "1.0.0",
+  "description": "Mobile application - [WDIO mobile app](https://github.com/webdriverio/native-demo-app/releases)",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
