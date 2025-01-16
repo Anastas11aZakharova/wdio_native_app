@@ -10,7 +10,7 @@ export const config: WebdriverIO.Config = {
   key: process.env.BROWSERSTACK_ACCESS_KEY,
   specs: ["./test/specs/**/*.ts"],
   exclude: [],
-  maxInstances: 10,
+  maxInstances: 1,
   capabilities: [
     {
       project: "WDIO native app testing",
