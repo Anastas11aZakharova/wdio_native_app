@@ -18,5 +18,20 @@
   "passwordError": "Please enter at least 8 characters",
   "emailWithoutAd": "qwertygmail.com",
   "emailWithoutCom": "qwerty@gmail.",
-  "emailWithoutDot": "qwerty@gmailcom"
+  "emailWithoutDot": "qwerty@gmailcom",
+  "webViewBurgerMenuElements": [
+    "Docs",
+    "API",
+    "Blog",
+    "Contribute",
+    "Community",
+    "Sponsor",
+    "v9"
+  ],
+  "webViewMainButtons": [
+    "Get started",
+    "Why WebdriverIO?",
+    "View on GitHub",
+    "Watch on YouTube"
+  ]
 }
