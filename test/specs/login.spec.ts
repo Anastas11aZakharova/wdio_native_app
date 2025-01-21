@@ -14,11 +14,11 @@ describe("Login page tests", () => {
   });
 
   it("WD_015 - Login with valid email and password", async () => {
-    await loginPage.emailField.setValue("qwerty@gmail.com");
-    await loginPage.passwordField.setValue("asd123k!");
+    await loginPage.emailField.setValue(testData.validEmail);
+    await loginPage.passwordField.setValue(testData.validPassword);
     await loginPage.bottomLoginButton.click();
     await expect(loginPage.successMessage).toBeDisplayed();
-    await expect(loginPage.successMessage).toHaveText("You are logged in!");
+    await expect(loginPage.successMessage).toHaveText(testData.successMessage);
     await loginPage.okButton.click();
     await loginPage.emailField.clearValue();
     await loginPage.passwordField.clearValue();
@@ -27,11 +27,11 @@ describe("Login page tests", () => {
   it("WD_016 - Enter special symbols in password", async () => {
     await loginPage.biometricsMessage.click();
     await expect(loginPage.loginPageTitle).toBeDisplayed();
-    await loginPage.emailField.setValue("qwerty@gmail.com");
-    await loginPage.passwordField.setValue("123!@#%a");
+    await loginPage.emailField.setValue(testData.validEmail);
+    await loginPage.passwordField.setValue(testData.passwordWithSpecialSymbols);
     await loginPage.bottomLoginButton.click();
     await expect(loginPage.successMessage).toBeDisplayed();
-    await expect(loginPage.successMessage).toHaveText("You are logged in!");
+    await expect(loginPage.successMessage).toHaveText(testData.successMessage);
     await loginPage.okButton.click();
     await loginPage.emailField.clearValue();
     await loginPage.passwordField.clearValue();
@@ -52,27 +52,27 @@ describe("Login page tests", () => {
   it("WD_018 -Login with invalid email ", async () => {
     await loginPage.biometricsMessage.click();
     await expect(loginPage.loginPageTitle).toBeDisplayed();
-    await loginPage.emailField.setValue("qwerty");
+    await loginPage.emailField.setValue(testData.passwordWithLessSymbols);
     await loginPage.bottomLoginButton.click();
     await expect(loginPage.emailErrorMessage).toBeDisplayed();
     await expect(loginPage.emailErrorMessage).toHaveText(
-      "Please enter a valid email address"
+      testData.emailError
     );
     await expect(loginPage.passwordErrorMessage).toBeDisplayed();
     await expect(loginPage.passwordErrorMessage).toHaveText(
-      "Please enter at least 8 characters"
+      testData.passwordError
     );
   });
 
   it("WD_019 -Login with invalid password ", async () => {
     await loginPage.biometricsMessage.click();
     await expect(loginPage.loginPageTitle).toBeDisplayed();
-    await loginPage.emailField.setValue("qwerty@gmail.com");
-    await loginPage.passwordField.setValue("qwertyu");
+    await loginPage.emailField.setValue(testData.validEmail);
+    await loginPage.passwordField.setValue(testData.passwordWithLessSymbols);
     await loginPage.bottomLoginButton.click();
     await expect(loginPage.passwordErrorMessage).toBeDisplayed();
     await expect(loginPage.passwordErrorMessage).toHaveText(
-      "Please enter at least 8 characters"
+      testData.passwordError
     );
     await loginPage.emailField.clearValue();
     await loginPage.passwordField.clearValue();
@@ -81,11 +81,11 @@ describe("Login page tests", () => {
   it("WD_020 -Enter data in Password field", async () => {
     await loginPage.biometricsMessage.click();
     await expect(loginPage.loginPageTitle).toBeDisplayed();
-    await loginPage.passwordField.setValue("qwerty");
+    await loginPage.passwordField.setValue(testData.validPassword);
     await loginPage.bottomLoginButton.click();
     await expect(loginPage.emailErrorMessage).toBeDisplayed();
     await expect(loginPage.emailErrorMessage).toHaveText(
-      "Please enter a valid email address"
+      testData.emailError
     );
     await loginPage.emailField.clearValue();
     await loginPage.passwordField.clearValue();
@@ -97,58 +97,58 @@ describe("Login page tests", () => {
     await loginPage.bottomLoginButton.click();
     await expect(loginPage.emailErrorMessage).toBeDisplayed();
     await expect(loginPage.emailErrorMessage).toHaveText(
-      "Please enter a valid email address"
+      testData.emailError
     );
     await expect(loginPage.passwordErrorMessage).toBeDisplayed();
     await expect(loginPage.passwordErrorMessage).toHaveText(
-      "Please enter at least 8 characters"
+      testData.passwordError
     );
   });
 
   it("WD_022 - Login with invalid email(without @)", async () => {
     await loginPage.biometricsMessage.click();
     await expect(loginPage.loginPageTitle).toBeDisplayed();
-    await loginPage.emailField.setValue("qwertygmail.com");
-    await loginPage.passwordField.setValue("qwertyuyh");
+    await loginPage.emailField.setValue(testData.emailWithoutAd)
+    await loginPage.passwordField.setValue(testData.validPassword);
     await loginPage.bottomLoginButton.click();
     await expect(loginPage.emailErrorMessage).toBeDisplayed();
     await expect(loginPage.emailErrorMessage).toHaveText(
-      "Please enter a valid email address"
+      testData.emailError
     );
   });
 
   it("WD_023 - Login with invalid email (without com)", async () => {
     await loginPage.biometricsMessage.click();
     await expect(loginPage.loginPageTitle).toBeDisplayed();
-    await loginPage.emailField.setValue("qwerty@gmail.");
-    await loginPage.passwordField.setValue("qwertyuyh");
+    await loginPage.emailField.setValue(testData.emailWithoutCom);
+    await loginPage.passwordField.setValue(testData.validPassword);
     await loginPage.bottomLoginButton.click();
     await expect(loginPage.emailErrorMessage).toBeDisplayed();
     await expect(loginPage.emailErrorMessage).toHaveText(
-      "Please enter a valid email address"
+      testData.emailError
     );
   });
 
   it("WD_024 -Login with invalid email (without .)", async () => {
     await loginPage.biometricsMessage.click();
     await expect(loginPage.loginPageTitle).toBeDisplayed();
-    await loginPage.emailField.setValue("qwerty@gmailcom");
-    await loginPage.passwordField.setValue("qwertyuyh");
+    await loginPage.emailField.setValue(testData.emailWithoutDot)
+    await loginPage.passwordField.setValue(testData.validPassword);
     await loginPage.bottomLoginButton.click();
     await expect(loginPage.emailErrorMessage).toBeDisplayed();
     await expect(loginPage.emailErrorMessage).toHaveText(
-      "Please enter a valid email address"
+      testData.emailError
     );
   });
 
   it("WD_025 - Login with allowed special symbols in email", async () => {
     await loginPage.biometricsMessage.click();
     await expect(loginPage.loginPageTitle).toBeDisplayed();
-    await loginPage.emailField.setValue("qwerty!#$%^&*@gmail.com");
-    await loginPage.passwordField.setValue("qwertyuyh");
+    await loginPage.emailField.setValue(testData.emailWithSpecialSymbols);
+    await loginPage.passwordField.setValue(testData.validPassword);
     await loginPage.bottomLoginButton.click();
     await expect(loginPage.successMessage).toBeDisplayed();
-    await expect(loginPage.successMessage).toHaveText("You are logged in!");
+    await expect(loginPage.successMessage).toHaveText(testData.successMessage);
     await loginPage.okButton.click()
   });
 
@@ -157,7 +157,7 @@ describe("Login page tests", () => {
     await expect(loginPage.loginPageTitle).toBeDisplayed();
     for (const email of testData.emailsWithInvalidSpecialSymbols) {
       await loginPage.emailField.setValue(email);
-      await loginPage.passwordField.setValue("qwertyui")
+      await loginPage.passwordField.setValue(testData.validPassword)
       await loginPage.bottomLoginButton.click();
       await expect(loginPage.emailErrorMessage).toBeDisplayed();
     }
