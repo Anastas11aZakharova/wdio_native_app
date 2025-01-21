@@ -30,10 +30,6 @@ class HomePage {
   public get loginPageIcon() {
     return $('//android.widget.TextView[@text="Login"]');
   }
-
-  public get vebViewPageIcon() {
-    return $('//android.widget.TextView[@text="Webview"]');
-  }
 }
 
 export default new HomePage();

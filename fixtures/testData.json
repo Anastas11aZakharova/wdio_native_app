@@ -8,51 +8,15 @@
     "qwerty.@gmail.com",
     "qwerty<>@gmail.com"
   ],
-  "webViewBurgerMenuElements": [
-    "Docs",
-    "API",
-    "Blog",
-    "Contribute",
-    "Community",
-    "Sponsor",
-    "v9"
-  ],
-  "webViewMainButtons": [
-    "Get started",
-    "Why WebdriverIO?",
-    "View on GitHub",
-    "Watch on YouTube"
-  ],
-  "validEmail": 
-    "qwerty@gmail.com",
-  
-  "validPassword": 
-    "asd123k!",
-
-  "successMessage": 
-    "You are logged in!",
-
-  "passwordWithSpecialSymbols":
-    "123!@#%a",
-
-  "emailWithSpecialSymbols":
-    "qwerty!#$%^&*@gmail.com",
-
-  "passwordWithLessSymbols":
-    "qwertyu",
-
-  "emailError":
-    "Please enter a valid email address",
-
-  "passwordError":
-   "Please enter at least 8 characters",
-
-  "emailWithoutAd": 
-  "qwertygmail.com",
-
-  "emailWithoutCom": 
-  "qwerty@gmail.",
-
-  "emailWithoutDot":
-  "qwerty@gmailcom"
+  "validEmail": "qwerty@gmail.com",
+  "validPassword": "asd123k!",
+  "successMessage": "You are logged in!",
+  "passwordWithSpecialSymbols": "123!@#%a",
+  "emailWithSpecialSymbols": "qwerty!#$%^&*@gmail.com",
+  "passwordWithLessSymbols": "qwertyu",
+  "emailError": "Please enter a valid email address",
+  "passwordError": "Please enter at least 8 characters",
+  "emailWithoutAd": "qwertygmail.com",
+  "emailWithoutCom": "qwerty@gmail.",
+  "emailWithoutDot": "qwerty@gmailcom"
 }
