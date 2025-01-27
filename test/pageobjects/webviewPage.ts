@@ -28,9 +28,7 @@ class WebviewPage {
   }
 
   public get apiText() {
-    return $(
-      '//android.widget.TextView[@text="Welcome to the WebdriverIO API docs. These pages contain reference materials for all implemented protocol bindings and convenience commands. Protocol commands, including "]'
-    );
+    return $('//android.widget.TextView[@text="Introduction"]');
   }
 
   public get searchButton() {
@@ -42,7 +40,9 @@ class WebviewPage {
   }
 
   public get searchResults() {
-    return $$('//android.view.View[starts-with(@resource-id, "docsearch-hits")]');
+    return $$(
+      '//android.view.View[starts-with(@resource-id, "docsearch-hits")]'
+    );
   }
 
   public async enterTextInSearchField(text: string): Promise<void> {
@@ -51,19 +51,11 @@ class WebviewPage {
 
   public async verifySearchResultsContain(text: string): Promise<void> {
     const searchResults = await this.searchResults;
-    for (let i = 0; i < (await searchResults.length); i++) {
-      const result = searchResults[i];
+    for (const result of searchResults) {
       await result.waitForDisplayed({ timeout: 5000 });
       const resultText = await result.getText();
-      console.log("Result:", resultText);
-      if (!resultText.toLowerCase().includes(text.toLowerCase())) {
-        throw new Error(
-          `Search result does not contain "${text}": ${resultText}`
-        );
-      }
+      await expect(resultText.toLowerCase()).toContain(text.toLowerCase());
     }
   }
-
 }
-
 export default new WebviewPage();

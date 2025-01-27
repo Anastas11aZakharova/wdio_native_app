@@ -68,39 +68,24 @@ class LoginPage {
       '//android.widget.TextView[@text="Please enter at least 8 characters"]'
     );
   }
+  
+  public get alertSuccessTitle() {
+    return $('//android.widget.TextView[@resource-id="android:id/alertTitle"]');
+  }
 
   public async enterLogin(text: string): Promise<void> {
-    await this.loginField.clearValue();
     await this.loginField.setValue(text);
   }
 
   public async enterPassword(text: string): Promise<void> {
-    await this.passwordField.clearValue();
     await this.passwordField.setValue(text);
   }
 
   public async enterConfirmPassword(text: string): Promise<void> {
-    await this.confirmPasswordField.clearValue();
     await this.confirmPasswordField.setValue(text);
   }
 
-  public async getTextFromLoginField(): Promise<string> {
-    return await this.loginField.getText();
-  }
-
-  public async getTextFromPasswordField(): Promise<string> {
-    return await this.passwordField.getText();
-  }
-
-  public async getTextFromConfirmPasswordField(): Promise<string> {
-    return await this.confirmPasswordField.getText();
-  }
-
-  public get alertSuccessTitle(){
-    return $('//android.widget.TextView[@resource-id="android:id/alertTitle"]')
-  }
-  
-  public async getAlertTitleText(){
+  public async getAlertTitleText() {
     return await this.alertSuccessTitle.getText();
   }
 }

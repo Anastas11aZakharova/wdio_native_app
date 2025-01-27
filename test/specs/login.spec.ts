@@ -1,7 +1,7 @@
 import { expect } from "@wdio/globals";
 import loginPage from "../pageobjects/loginPage.js";
 import * as testData from "../../fixtures/testData.json";
-import { generateRandomString } from "../../fixtures/random";
+import { faker } from "@faker-js/faker";
 
 describe("Login page tests", () => {
   describe("Sign Up tab tests", () => {
@@ -14,12 +14,9 @@ describe("Login page tests", () => {
       await expect(loginPage.mailIcon).toBeDisplayed();
       await expect(loginPage.passwordIcon).toBeDisplayed();
       await expect(loginPage.confirmPasswordIcon).toBeDisplayed();
-
-      expect(await loginPage.getTextFromLoginField()).toBe("Email");
-      expect(await loginPage.getTextFromPasswordField()).toBe("Password");
-      expect(await loginPage.getTextFromConfirmPasswordField()).toBe(
-        "Confirm password"
-      );
+      expect(loginPage.loginField).toHaveText("Email");
+      expect(loginPage.passwordField).toHaveText("Password");
+      expect(loginPage.confirmPasswordField).toHaveText("Confirm password");
     });
 
     it("WD_032 should check sign up empty fields", async () => {
@@ -41,16 +38,14 @@ describe("Login page tests", () => {
     });
 
     it("WD_28, WD_29, WD_036 should sign up with special symbols in email and password", async () => {
-      const randomEmail = generateRandomString(8) + "!@test.com";
-      const randomPassword = generateRandomString(8) + "!@#";
-
+      const randomEmail = faker.internet.email();
+      const randomPassword = faker.internet.password() + "!@#";
       await loginPage.enterLogin(randomEmail);
       await loginPage.enterPassword(randomPassword);
       await loginPage.enterConfirmPassword(randomPassword);
       await loginPage.signUpButton.click();
-
       const alertText = await loginPage.getAlertTitleText();
-      expect(alertText).toBe("Signed Up!");
+      expect(alertText).toHaveText("Signed Up!");
     });
   });
 });
